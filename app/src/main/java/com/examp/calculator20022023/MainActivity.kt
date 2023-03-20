@@ -51,5 +51,30 @@ class MainActivity : AppCompatActivity() {
                 textViewResult.text = "Result: $number1 + $number2 = $result"
             }
         })
+
+        btnDivision.setOnClickListener(object : View.OnClickListener{
+            override fun onClick(p0: View?) {
+                val textNumber1 = edtNumber1.text.toString()
+                val textNumber2 = edtNumber2.text.toString()
+
+                // Kiểm tra coi có giá trị hay không
+                if (textNumber1.isEmpty() || textNumber2.isEmpty()) {
+                    Toast.makeText(this@MainActivity, "Bạn chưa nhập đầy đủ!!!", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                val number1 = textNumber1.toFloat()
+                val number2 = textNumber2.toFloat()
+
+                if (number2 == 0.0f) {
+                    Toast.makeText(this@MainActivity, "Không chia với 0!!!", Toast.LENGTH_SHORT).show()
+                    return
+                }
+
+                val result = number1 / number2
+
+                textViewResult.text = "Result: $number1 / $number2 = $result"
+            }
+        })
     }
 }
